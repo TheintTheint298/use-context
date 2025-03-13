@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "../src/components/Dashboard";
 import Recommendations from "../src/components/Recommendations";
 import Podcasts from "../src/components/Podcasts";
+import { UserContext } from "./contexts/UserContext";
 
 function App() {
   return (
@@ -9,11 +10,13 @@ function App() {
       <h1 className="text-3xl text-center py-6 my-2">useContext</h1>
 
       <Router>
-        <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/recommendations" element={<Recommendations />} />
-          <Route path="/podcasts" element={<Podcasts />} />
-        </Routes>
+        <UserContext.Provider value="Shrui">
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/recommendations" element={<Recommendations />} />
+            <Route path="/podcasts" element={<Podcasts />} />
+          </Routes>
+        </UserContext.Provider>
       </Router>
     </>
   );
